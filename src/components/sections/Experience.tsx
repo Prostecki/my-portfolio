@@ -163,17 +163,17 @@ export function Experience() {
                                             </div>
 
                                             {/* Roles */}
-                                            <div className="relative space-y-10 pl-4 md:pl-8">
+                                            <div className="relative space-y-10 pl-6 md:pl-8">
                                                 {/* Vertical line for multiple roles */}
                                                 {exp.roles.length > 1 && (
-                                                    <div className="absolute left-[1.1rem] md:left-4 top-2 bottom-2 w-0.5 bg-muted-foreground/20" />
+                                                    <div className="absolute left-[11px] md:left-[15px] top-2 bottom-2 w-0.5 bg-muted-foreground/20" />
                                                 )}
 
                                                 {exp.roles.map((role, rIndex) => (
                                                     <div key={rIndex} className="relative">
                                                         {/* Dot */}
                                                         {exp.roles.length > 1 && (
-                                                            <div className="absolute -left-[1.35rem] md:-left-5.5 top-2 w-3 h-3 rounded-full bg-background border-2 border-primary" />
+                                                            <div className="absolute -left-[19px] md:-left-[23px] top-2 w-3 h-3 rounded-full bg-background border-2 border-primary z-10" />
                                                         )}
 
                                                         <div className="space-y-4">
