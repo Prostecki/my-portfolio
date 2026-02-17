@@ -10,6 +10,14 @@ import { ExternalLink, Github } from "lucide-react"
 
 const projects = [
     {
+        title: "Serverless Image Processor",
+        description: "A production-ready, event-driven image processing pipeline on GCP. Features Terraform IaC, 2nd Gen Cloud Functions, Sharp for high-performance processing, and Principle of Least Privilege security.",
+        image: "/gcp_image_pipeline.png",
+        tags: ["GCP", "Terraform", "Node.js", "Eventarc", "Cloud Functions"],
+        link: "https://github.com/Prostecki/gcp-event-driven-image-pipeline",
+        github: "https://github.com/Prostecki/gcp-event-driven-image-pipeline",
+    },
+    {
         title: "Hakim Livs",
         description: "Hakim Livs Webshop is a full-stack e-commerce application built by modern concepts and technologies with user authentication through JWT auth.",
         image: "/hakim_livs.png",
@@ -89,12 +97,16 @@ export function Projects() {
                                         </div>
 
                                         <div className="flex gap-4 pt-4">
-                                            <Button size="sm" variant="default" className="rounded-full group/btn">
-                                                View Project <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                                            </Button>
-                                            <Button size="sm" variant="ghost" className="rounded-full">
-                                                <Github className="mr-2 h-4 w-4" /> Code
-                                            </Button>
+                                            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                                <Button size="sm" variant="default" className="rounded-full group/btn">
+                                                    View Project <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                                                </Button>
+                                            </a>
+                                            <a href={project.github} target="_blank" rel="noopener noreferrer">
+                                                <Button size="sm" variant="ghost" className="rounded-full">
+                                                    <Github className="mr-2 h-4 w-4" /> Code
+                                                </Button>
+                                            </a>
                                         </div>
                                     </CardContent>
                                 </div>
