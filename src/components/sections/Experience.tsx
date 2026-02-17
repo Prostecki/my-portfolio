@@ -7,16 +7,30 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Calendar, MapPin, Briefcase, GraduationCap } from "lucide-react"
 
+const calculateDuration = (startDate: string, endDate?: string) => {
+    const start = new Date(startDate)
+    const end = endDate ? new Date(endDate) : new Date()
+    const diffTime = Math.abs(end.getTime() - start.getTime())
+    const diffMonths = Math.ceil(diffTime / (1000 * 60 * 60 * 24 * 30.44))
+
+    if (diffMonths >= 12) {
+        const years = Math.floor(diffMonths / 12)
+        const months = diffMonths % 12
+        return months > 0 ? `${years} yr ${months} mos` : `${years} yr`
+    }
+    return `${diffMonths} mos`
+}
+
 const experiences = [
     {
         company: "Aclarity Tech",
         location: "Stockholm, Sweden",
         roles: [
             {
-                title: "Software Developer",
+                title: "Cloud Native Engineer",
                 type: "Internship",
                 period: "Nov 2025 - Present",
-                duration: "3 mos",
+                startDate: "2025-11-01",
                 location: "Stockholm · On-site",
                 description: "Contribute to the full-stack development of our retail SaaS product, covering both the frontend (React) and backend (Node.js/Python). Build, test, and maintain scalable backend services deployed on the Google Cloud Platform (GCP). Work with data modeling, AI integrations, and analytics pipelines to generate insights and create significant value for users. Contribute to customized implementations and integrations within the Google Cloud environment for client-specific needs. Collaborate closely with our team of developers, designers, and business specialists to translate requirements into robust technical solutions.",
                 skills: ["Google Cloud Platform (GCP)", "Terraform", "React", "Node.js", "Python", "AI Integrations", "Data Modeling", "SaaS"],
@@ -25,7 +39,8 @@ const experiences = [
                 title: "Fullstack Developer",
                 type: "Part-time",
                 period: "Jul 2025 - Oct 2025",
-                duration: "4 mos",
+                startDate: "2025-07-01",
+                endDate: "2025-10-30",
                 location: "Stockholm, Sweden · Remote",
                 description: "Designed and deployed a high-performance product landing page using the Next.js framework, React (TypeScript), and Tailwind CSS, focusing on responsiveness and user experience. Developed and integrated a robust Content Management System (CMS) via FireCMS and Firestore DB, enabling dynamic page creation and content updates by non-technical users. Managed the full application lifecycle, from front-end development to back-end services, leveraging Firebase and Google Cloud Platform (GCP) infrastructure.",
                 skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "FireCMS", "Firestore", "Firebase", "GCP"],
@@ -33,32 +48,18 @@ const experiences = [
         ],
     },
     {
-        company: "ICA Brunna",
-        location: "Stockholm, Brunna",
-        roles: [
-            {
-                title: "Delivery Driver",
-                type: "",
-                period: "May 2024 - Nov 2025",
-                duration: "",
-                location: "",
-                description: "Responsible for efficient delivery operations, ensuring timely and accurate deliveries while maintaining excellent customer service.",
-                skills: ["Time Management", "Communication", "Problem Solving", "Swedish", "English"],
-            }
-        ]
-    },
-    {
-        company: "Self-Employed",
+        company: "Independent Contractor",
         location: "Remote",
         roles: [
             {
-                title: "Web Development Consultant",
-                type: "",
+                title: "Fullstack Developer",
+                type: "Project-based",
                 period: "Sep 2023 - Apr 2025",
-                duration: "",
-                location: "",
-                description: "Delivered custom web solutions for clients, specializing in responsive and interactive websites. Managed full project lifecycle.",
-                skills: ["HTML", "CSS", "JS", "React.js", "Tailwind", "Git", "GCP", "Yandex Cloud"],
+                startDate: "2023-09-01",
+                endDate: "2025-04-30",
+                location: "Remote",
+                description: "Collaborated with cross-functional teams and stakeholders to build and maintain responsive web applications. Focused on translating business goals into technical requirements, implementing modern UI/UX patterns, and optimizing frontend performance. Managed end-to-end delivery of projects while ensuring high code standards and team-oriented development.",
+                skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "API Integration", "Git"],
             }
         ]
     },
@@ -70,16 +71,24 @@ const experiences = [
                 title: "Web Development Intern",
                 type: "",
                 period: "Oct 2022 - Mar 2023",
-                duration: "",
+                startDate: "2022-10-01",
+                endDate: "2023-03-31",
                 location: "",
                 description: "Gained hands-on experience in full-stack web development, working with frontend and backend technologies.",
-                skills: ["HTML", "CSS", "JS", "PHP", "MySQL", "Docker", "GO"],
+                skills: ["HTML", "CSS", "JS", "PHP", "MySQL", "Docker", "GO", "Git"],
             }
         ]
     },
 ]
 
 const education = [
+    {
+        title: "Google Cloud Certified - Associate Cloud Engineer",
+        school: "Google",
+        period: "Feb 2026 - Feb 2029",
+        description: "Professional certification validating the ability to deploy applications, monitor operations, and manage enterprise solutions on Google Cloud Platform. Demonstrates proficiency in using Google Cloud Console and the command-line interface to perform common platform-based tasks to maintain one or more deployed solutions that leverage Google-managed or self-managed services on Google Cloud.",
+        skills: ["GCP", "Cloud Infrastructure", "Kubernetes", "IAM", "Cloud Monitoring"],
+    },
     {
         title: "Fullstack Developer, open source",
         school: "Nackademin, Stockholm",
@@ -181,7 +190,7 @@ export function Experience() {
                                                                 <h4 className="text-xl font-bold text-foreground/90">{role.title}</h4>
                                                                 <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground bg-muted/30 px-3 py-1 rounded-full w-fit">
                                                                     <Calendar className="h-3 w-3" />
-                                                                    <span>{role.period} {role.duration && `· ${role.duration}`}</span>
+                                                                    <span>{role.period} · {calculateDuration(role.startDate, role.endDate)}</span>
                                                                 </div>
                                                             </div>
 

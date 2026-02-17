@@ -10,14 +10,6 @@ import { ExternalLink, Github } from "lucide-react"
 
 const projects = [
     {
-        title: "Pokémon App",
-        description: "A comprehensive React application for exploring Pokémon data with interactive features: Browse Pokémon, view detailed stats, check evolution chains, and more.",
-        image: "/pokemon.png",
-        tags: ["React.js", "JavaScript", "TailwindCSS", "Framer Motion"],
-        link: "#",
-        github: "#",
-    },
-    {
         title: "Hakim Livs",
         description: "Hakim Livs Webshop is a full-stack e-commerce application built by modern concepts and technologies with user authentication through JWT auth.",
         image: "/hakim_livs.png",
@@ -26,34 +18,18 @@ const projects = [
         github: "#",
     },
     {
+        title: "Pokémon App",
+        description: "A comprehensive React application for exploring Pokémon data with interactive features: Browse Pokémon, view detailed stats, check evolution chains, and more.",
+        image: "/pokemon.png",
+        tags: ["React.js", "JavaScript", "TailwindCSS", "Framer Motion"],
+        link: "#",
+        github: "#",
+    },
+    {
         title: "Sortify",
         description: "An efficient sorting and organization tool with intuitive interface and powerful features.",
         image: "/sortify.png",
         tags: ["React.js", "JavaScript", "TailwindCSS"],
-        link: "#",
-        github: "#",
-    },
-    {
-        title: "Quiz App",
-        description: "A dynamic quiz application built with modern web technologies, featuring interactive questions and real-time scoring.",
-        image: "/project1.png",
-        tags: ["HTML", "CSS", "JavaScript"],
-        link: "#",
-        github: "#",
-    },
-    {
-        title: "Advent Calendar 2024",
-        description: "An interactive advent calendar application with daily surprises and festive animations.",
-        image: "/advent_calendar.png",
-        tags: ["React.js", "JavaScript", "TailwindCSS"],
-        link: "#",
-        github: "#",
-    },
-    {
-        title: "Weather App 2025",
-        description: "A modern weather application providing accurate forecasts with beautiful UI and responsive design.",
-        image: "/weather_app.png",
-        tags: ["React.js", "Node.js", "TailwindCSS"],
         link: "#",
         github: "#",
     },

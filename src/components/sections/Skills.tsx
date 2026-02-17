@@ -10,22 +10,22 @@ const skillCategories = [
     {
         title: "Frontend Development",
         icon: <Monitor className="h-6 w-6" />,
-        skills: ["JavaScript", "React.js", "Vite.js", "TailwindCSS", "Bootstrap 4", "HTML5", "TypeScript"],
+        skills: ["React.js", "Next.js", "TypeScript", "TailwindCSS", "Vite", "Framer Motion"],
     },
     {
-        title: "Backend Development",
+        title: "Backend & Systems",
         icon: <Code2 className="h-6 w-6" />,
-        skills: ["Node.js", "Mongoose", "MySQL", "PostgreSQL", "MongoDB"],
+        skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Firestore", "Zod", "REST APIs"],
     },
     {
-        title: "DevOps & Cloud",
+        title: "Cloud Engineering",
         icon: <Zap className="h-6 w-6" />,
-        skills: ["Docker", "Google Cloud Platform", "Terraform", "CI/CD (GitHub Actions)"],
+        skills: ["Google Cloud Platform", "Firebase", "Terraform", "gcloud CLI", "Cloud Monitoring", "Cloud Logging", "Kubernetes", "Docker"],
     },
     {
-        title: "Tools & Technologies",
+        title: "Development Suite",
         icon: <Monitor className="h-6 w-6" />,
-        skills: ["Canva", "Postman", "Slack", "Figma", "VSCode", "Vite", "Jest", "Git"],
+        skills: ["CI/CD (GitHub Actions)", "Git", "Jest", "Vitest", "Postman"],
     },
 ]
 

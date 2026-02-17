@@ -53,7 +53,7 @@ export function About() {
                                 <ul className="space-y-4">
                                     {[
                                         { label: "Location", value: "Stockholm, Sweden" },
-                                        { label: "Current Role", value: "Fullstack Developer" },
+                                        { label: "Current Role", value: "Cloud Native Software Engineer" },
                                         { label: "Experience", value: "Aclarity Tech AB" },
                                         { label: "Interests", value: "Problem Solving, AI, Web Dev" },
                                     ].map((fact, i) => (
