@@ -8,24 +8,24 @@ import { Monitor, Code2, Paintbrush, Zap } from "lucide-react"
 
 const skillCategories = [
     {
-        title: "Frontend Development",
-        icon: <Monitor className="h-6 w-6" />,
-        skills: ["React.js", "Next.js", "TypeScript", "TailwindCSS", "Vite", "Framer Motion"],
-    },
-    {
-        title: "Backend & Systems",
+        title: "Language",
         icon: <Code2 className="h-6 w-6" />,
-        skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Firestore", "Zod", "REST APIs"],
+        skills: ["TypeScript", "JavaScript", "Python", "SQL"],
     },
     {
-        title: "Cloud Engineering",
-        icon: <Zap className="h-6 w-6" />,
-        skills: ["Google Cloud Platform", "Firebase", "Terraform", "gcloud CLI", "Cloud Monitoring", "Cloud Logging", "Kubernetes", "Docker"],
-    },
-    {
-        title: "Development Suite",
+        title: "Frameworks",
         icon: <Monitor className="h-6 w-6" />,
-        skills: ["CI/CD (GitHub Actions)", "Git", "Jest", "Vitest", "Postman"],
+        skills: ["React/Next.js", "Node.js", "Hono", "Express.js"],
+    },
+    {
+        title: "Cloud/DevOps",
+        icon: <Zap className="h-6 w-6" />,
+        skills: ["GCP", "Terraform", "Docker", "CI/CD", "Firebase"],
+    },
+    {
+        title: "AI/LLM",
+        icon: <Monitor className="h-6 w-6" />,
+        skills: ["Google ADK", "Vertex AI", "Agentic Workflows", "Prompt Engineering"],
     },
 ]
 

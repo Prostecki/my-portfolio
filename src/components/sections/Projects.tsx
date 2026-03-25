@@ -10,36 +10,20 @@ import { ExternalLink, Github } from "lucide-react"
 
 const projects = [
     {
-        title: "Serverless Image Processor",
-        description: "A production-ready, event-driven image processing pipeline on GCP. Features Terraform IaC, 2nd Gen Cloud Functions, Sharp for high-performance processing, and Principle of Least Privilege security.",
-        image: "/gcp_image_pipeline.png",
-        tags: ["GCP", "Terraform", "Node.js", "Eventarc", "Cloud Functions"],
+        title: "AI Bookstore Agent",
+        description: "Architected a hierarchical multi-agent system (Root + Sub-agents) using Python and Google ADK, automating the end-to-end e-commerce flow from discovery to checkout. Engineered semantic retrieval pipelines via Vertex AI Vector Search and Embeddings across 270,000+ records in BigQuery. Deployed a Next.js/TypeScript conversational UI and provisioned the entire cloud infrastructure via Terraform.",
+        image: "/ai_bookstore_agent.png",
+        tags: ["Python", "Google ADK", "Vertex AI", "BigQuery", "Terraform", "Next.js"],
+        link: "#",
+        github: "#",
+    },
+    {
+        title: "GCP Event-Driven Image Processing Pipeline",
+        description: "Engineered a serverless, event-driven pipeline using Terraform to provision GCP resources (Storage, Pub/Sub, Cloud Functions). Developed Node.js microservices for automated image analysis and metadata extraction, leveraging the Vision API.",
+        image: "/gcp_pipeline.png",
+        tags: ["GCP", "Terraform", "Node.js", "Eventarc", "Vision API", "Cloud Functions"],
         link: "https://github.com/Prostecki/gcp-event-driven-image-pipeline",
         github: "https://github.com/Prostecki/gcp-event-driven-image-pipeline",
-    },
-    {
-        title: "Hakim Livs",
-        description: "Hakim Livs Webshop is a full-stack e-commerce application built by modern concepts and technologies with user authentication through JWT auth.",
-        image: "/hakim_livs.png",
-        tags: ["MongoDB", "Node.js", "Express", "JWT", "Jest"],
-        link: "#",
-        github: "#",
-    },
-    {
-        title: "Pokémon App",
-        description: "A comprehensive React application for exploring Pokémon data with interactive features: Browse Pokémon, view detailed stats, check evolution chains, and more.",
-        image: "/pokemon.png",
-        tags: ["React.js", "JavaScript", "TailwindCSS", "Framer Motion"],
-        link: "#",
-        github: "#",
-    },
-    {
-        title: "Sortify",
-        description: "An efficient sorting and organization tool with intuitive interface and powerful features.",
-        image: "/sortify.png",
-        tags: ["React.js", "JavaScript", "TailwindCSS"],
-        link: "#",
-        github: "#",
     },
 ]
 
@@ -58,58 +42,67 @@ export function Projects() {
                     <div className="h-1 w-20 bg-primary mb-8" />
                 </motion.div>
 
-                <div className="grid grid-cols-1 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.title}
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.7, delay: index * 0.2 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className="flex"
                         >
-                            <Card className="group overflow-hidden border-none shadow-xl bg-background/50 backdrop-blur-md">
-                                <div className="grid md:grid-cols-2">
-                                    <div className="relative h-72 md:h-auto md:min-h-[400px] overflow-hidden">
+                            <Card className="group overflow-hidden border border-muted-foreground/10 bg-card/30 backdrop-blur-sm hover:border-primary/30 transition-all flex flex-col w-full">
+                                {/* Image Section */}
+                                <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-gradient-to-br from-primary/5 to-transparent flex items-center justify-center p-6 border-b border-muted-foreground/10">
+                                    <div className="relative w-full h-full rounded-xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.03] border border-muted-foreground/20">
                                         <Image
                                             src={project.image}
                                             alt={project.title}
                                             fill
                                             priority={index < 2}
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                            className="object-cover object-top"
                                         />
                                     </div>
-                                    <CardContent className="p-8 md:p-12 flex flex-col justify-center space-y-6">
-                                        <div className="space-y-2">
-                                            <h3 className="text-2xl md:text-3xl font-bold font-mono tracking-tighter">
-                                                {project.title}
-                                            </h3>
-                                            <p className="text-muted-foreground text-lg">
-                                                {project.description}
-                                            </p>
-                                        </div>
-
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.tags.map((tag) => (
-                                                <Badge key={tag} variant="outline" className="rounded-full">
-                                                    {tag}
-                                                </Badge>
-                                            ))}
-                                        </div>
-
-                                        <div className="flex gap-4 pt-4">
-                                            <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                                <Button size="sm" variant="default" className="rounded-full group/btn">
-                                                    View Project <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                                                </Button>
-                                            </a>
-                                            <a href={project.github} target="_blank" rel="noopener noreferrer">
-                                                <Button size="sm" variant="ghost" className="rounded-full">
-                                                    <Github className="mr-2 h-4 w-4" /> Code
-                                                </Button>
-                                            </a>
-                                        </div>
-                                    </CardContent>
                                 </div>
+                                
+                                {/* Content Section */}
+                                <CardContent className="p-6 md:p-8 flex flex-col flex-1">
+                                    <div className="space-y-4">
+                                        <h3 className="text-xl md:text-2xl font-bold font-mono tracking-tight group-hover:text-primary transition-colors">
+                                            {project.title}
+                                        </h3>
+                                        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                                            {project.description}
+                                        </p>
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-2 mt-6 mb-8 flex-1 content-start">
+                                        {project.tags.map((tag) => (
+                                            <Badge 
+                                                key={tag} 
+                                                variant="secondary" 
+                                                className="text-[10px] uppercase font-bold tracking-widest bg-primary/5 text-primary border border-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground"
+                                            >
+                                                {tag}
+                                            </Badge>
+                                        ))}
+                                    </div>
+
+                                    <div className="flex gap-4 mt-auto pt-4 border-t border-muted-foreground/10">
+                                        <Button size="sm" variant="default" className="rounded-full group/btn flex-1 sm:flex-none" asChild>
+                                            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                                View Project <ExternalLink className="ml-2 h-3 w-3 group-hover/btn:translate-x-1 transition-transform" />
+                                            </a>
+                                        </Button>
+                                        <Button size="sm" variant="outline" className="rounded-full flex-1 sm:flex-none" asChild>
+                                            <a href={project.github} target="_blank" rel="noopener noreferrer">
+                                                <Github className="mr-2 h-3 w-3" /> Code
+                                            </a>
+                                        </Button>
+                                    </div>
+                                </CardContent>
                             </Card>
                         </motion.div>
                     ))}

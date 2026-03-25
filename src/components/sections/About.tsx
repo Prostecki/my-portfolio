@@ -53,8 +53,8 @@ export function About() {
                                 <ul className="space-y-4">
                                     {[
                                         { label: "Location", value: "Stockholm, Sweden" },
-                                        { label: "Current Role", value: "Cloud Native Software Engineer" },
-                                        { label: "Experience", value: "Aclarity Tech AB" },
+                                        { label: "Current Role", value: "Fullstack Engineer (GCP & Agentic AI)" },
+                                        { label: "Experience", value: "Aclarity AB" },
                                         { label: "Interests", value: "Problem Solving, AI, Web Dev" },
                                     ].map((fact, i) => (
                                         <li key={i} className="flex justify-between items-center group/item">

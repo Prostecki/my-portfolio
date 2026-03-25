@@ -10,9 +10,39 @@ import { Send, Mail, MapPin, Phone, Briefcase } from "lucide-react"
 import { toast } from "sonner"
 
 export function Contact() {
-    const handleSubmit = (e: React.FormEvent) => {
+    const [isSubmitting, setIsSubmitting] = React.useState(false)
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        toast.success("Message sent! I'll get back to you soon.")
+        setIsSubmitting(true)
+        
+        try {
+            const formData = new FormData(e.currentTarget)
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message'),
+            }
+
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+
+            if (!response.ok) throw new Error('Failed to send message')
+            
+            toast.success("Message sent! I'll get back to you soon.")
+            ;(e.target as HTMLFormElement).reset()
+        } catch (error) {
+            toast.error("Failed to send message. Please try again later.")
+            console.error("Contact form error:", error)
+        } finally {
+            setIsSubmitting(false)
+        }
     }
 
     return (
@@ -39,7 +69,7 @@ export function Contact() {
                     >
                         {[
                             { icon: <Mail className="h-5 w-5" />, label: "Email", value: "mark.taratynov@gmail.com" },
-                            { icon: <Briefcase className="h-5 w-5" />, label: "Status", value: "Currently employed" },
+                            { icon: <Phone className="h-5 w-5" />, label: "Phone", value: "+46704937131" },
                             { icon: <MapPin className="h-5 w-5" />, label: "Location", value: "Stockholm, Sweden" },
                         ].map((item, i) => (
                             <div key={i} className="flex items-center gap-4 group">
@@ -66,20 +96,20 @@ export function Contact() {
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="space-y-2">
-                                            <Input placeholder="Name" required className="bg-background/50 border-none shadow-inner" />
+                                            <Input name="name" placeholder="Name" required disabled={isSubmitting} className="bg-background/50 border-none shadow-inner" />
                                         </div>
                                         <div className="space-y-2">
-                                            <Input type="email" placeholder="Email" required className="bg-background/50 border-none shadow-inner" />
+                                            <Input name="email" type="email" placeholder="Email" required disabled={isSubmitting} className="bg-background/50 border-none shadow-inner" />
                                         </div>
                                     </div>
                                     <div className="space-y-2">
-                                        <Input placeholder="Subject" required className="bg-background/50 border-none shadow-inner" />
+                                        <Input name="subject" placeholder="Subject" required disabled={isSubmitting} className="bg-background/50 border-none shadow-inner" />
                                     </div>
                                     <div className="space-y-2">
-                                        <Textarea placeholder="Your message..." required className="min-h-[150px] bg-background/50 border-none shadow-inner resize-none" />
+                                        <Textarea name="message" placeholder="Your message..." required disabled={isSubmitting} className="min-h-[150px] bg-background/50 border-none shadow-inner resize-none" />
                                     </div>
-                                    <Button type="submit" className="w-full rounded-full h-12 text-md transition-all hover:scale-[1.02]">
-                                        Send Message <Send className="ml-2 h-4 w-4" />
+                                    <Button type="submit" disabled={isSubmitting} className="w-full rounded-full h-12 text-md transition-all hover:scale-[1.02] disabled:opacity-50 disabled:hover:scale-100">
+                                        {isSubmitting ? "Sending..." : "Send Message"} <Send className="ml-2 h-4 w-4" />
                                     </Button>
                                 </form>
                             </CardContent>

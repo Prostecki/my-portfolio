@@ -23,17 +23,17 @@ const calculateDuration = (startDate: string, endDate?: string) => {
 
 const experiences = [
     {
-        company: "Aclarity Tech",
+        company: "Aclarity AB",
         location: "Stockholm, Sweden",
         roles: [
             {
-                title: "Cloud Native Engineer",
+                title: "Software Developer",
                 type: "Internship",
                 period: "Nov 2025 - Present",
                 startDate: "2025-11-01",
                 location: "Stockholm · On-site",
-                description: "Contribute to the full-stack development of our retail SaaS product, covering both the frontend (React) and backend (Node.js/Python). Build, test, and maintain scalable backend services deployed on the Google Cloud Platform (GCP). Work with data modeling, AI integrations, and analytics pipelines to generate insights and create significant value for users. Contribute to customized implementations and integrations within the Google Cloud environment for client-specific needs. Collaborate closely with our team of developers, designers, and business specialists to translate requirements into robust technical solutions.",
-                skills: ["Google Cloud Platform (GCP)", "Terraform", "React", "Node.js", "Python", "AI Integrations", "Data Modeling", "SaaS"],
+                description: "• Infrastructure: Architected 100% Infrastructure-as-Code (IaC) environments using Terraform, reducing environment setup time by 70% and ensuring zero-drift deployments.\n• Backend: Engineered Python APIs to interface with BigQuery, enabling efficient real-time retrieval and processing across a dataset of 270,000+ records.\n• AI: Architected and orchestrated a Multi-agent AI System leveraging Vertex AI and BigQuery, enabling autonomous e-commerce workflows from product discovery to checkout.\n• Frontend: Built responsive and interactive UIs with React/Next.js, ensuring seamless integration with cloud-based backend services\nhttps://www.aclarity.se/",
+                skills: ["Terraform", "Python", "BigQuery", "Vertex AI", "React/Next.js"],
             },
             {
                 title: "Fullstack Developer",
@@ -42,42 +42,10 @@ const experiences = [
                 startDate: "2025-07-01",
                 endDate: "2025-10-30",
                 location: "Stockholm, Sweden · Remote",
-                description: "Designed and deployed a high-performance product landing page using the Next.js framework, React (TypeScript), and Tailwind CSS, focusing on responsiveness and user experience. Developed and integrated a robust Content Management System (CMS) via FireCMS and Firestore DB, enabling dynamic page creation and content updates by non-technical users. Managed the full application lifecycle, from front-end development to back-end services, leveraging Firebase and Google Cloud Platform (GCP) infrastructure.",
-                skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "FireCMS", "Firestore", "Firebase", "GCP"],
+                description: "Engineered a high-performance Next.js landing page integrated with a custom FireCMS/Firestore backend, enabling dynamic content management and 100% autonomy for non-technical users.",
+                skills: ["Next.js", "TypeScript", "FireCMS", "Firestore"],
             },
         ],
-    },
-    {
-        company: "Independent Contractor",
-        location: "Remote",
-        roles: [
-            {
-                title: "Fullstack Developer",
-                type: "Project-based",
-                period: "Sep 2023 - Apr 2025",
-                startDate: "2023-09-01",
-                endDate: "2025-04-30",
-                location: "Remote",
-                description: "Collaborated with cross-functional teams and stakeholders to build and maintain responsive web applications. Focused on translating business goals into technical requirements, implementing modern UI/UX patterns, and optimizing frontend performance. Managed end-to-end delivery of projects while ensuring high code standards and team-oriented development.",
-                skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "API Integration", "Git"],
-            }
-        ]
-    },
-    {
-        company: "Nordic IT School",
-        location: "Moscow, Russia",
-        roles: [
-            {
-                title: "Web Development Intern",
-                type: "",
-                period: "Oct 2022 - Mar 2023",
-                startDate: "2022-10-01",
-                endDate: "2023-03-31",
-                location: "",
-                description: "Gained hands-on experience in full-stack web development, working with frontend and backend technologies.",
-                skills: ["HTML", "CSS", "JS", "PHP", "MySQL", "Docker", "GO", "Git"],
-            }
-        ]
     },
 ]
 
@@ -90,29 +58,8 @@ const education = [
         skills: ["GCP", "Cloud Infrastructure", "Kubernetes", "IAM", "Cloud Monitoring"],
     },
     {
-        title: "Fullstack Developer, open source",
-        school: "Nackademin, Stockholm",
-        period: "Aug 2024 - Present",
-        description: "Comprehensive fullstack development program focused on modern web technologies, including React, Node.js, databases, and open-source contributions. Learning industry best practices and agile development methodologies.",
-        skills: ["React", "Node.js", "Fullstack", "Open Source", "Agile"],
-    },
-    {
-        title: "Municipal Adult Education",
-        school: "Solna KomVux, Stockholm",
-        period: "Oct 2022 - April 2024",
-        description: "Intensive language studies to achieve proficiency in Swedish and English, enabling better integration into Swedish society and professional communication in international environments.",
-        skills: ["Swedish", "English"],
-    },
-    {
-        title: "The Complete JavaScript Course 2025: From Zero to Expert!",
-        school: "Udemy, Inc",
-        period: "Sep 2024 - Jan 2025",
-        description: "Comprehensive JavaScript course covering fundamentals to advanced concepts including ES6+, DOM manipulation, Object-Oriented Programming, asynchronous programming, working with APIs, and modern development tools.",
-        skills: ["JavaScript", "ES6+", "DOM", "OOP", "AJAX", "APIs", "NPM", "Parcel"],
-    },
-    {
-        title: "Bachelor's degree in Athletics",
-        school: "Lesgaft National State University, Russia",
+        title: "Bachelor's Degree Sports Science",
+        school: "Lesgaft National State University of Physical Education, Sport and Health",
         period: "Sep 2014 - May 2018",
         description: "Four-year degree program focusing on sports science, athletic training methodologies, biomechanics, physiology, and coaching techniques. Developed strong analytical and problem-solving skills through scientific approach to athletics.",
         skills: ["Sports Science", "Athletic Training", "Analytical Skills"],

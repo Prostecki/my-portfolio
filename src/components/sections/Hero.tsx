@@ -72,7 +72,7 @@ export function Hero() {
                         className="text-4xl md:text-7xl font-bold tracking-tighter"
                     >
                         I&apos;m <span className="text-primary italic">Mark Taratynov</span>, <br />
-                        Cloud Native Engineer
+                        Fullstack Cloud Engineer
                     </motion.h1>
 
                     <motion.p
@@ -81,8 +81,8 @@ export function Hero() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto"
                     >
-                        Architecting and building scalable, cloud-native applications on Google Cloud Platform.
-                        Focused on performance, reliability, and modern DevOps practices.
+                        Specializing in Cloud Infrastructure (GCP) and Agentic AI.
+                        Bridging application logic and scalable cloud reliability using TypeScript and Terraform.
                     </motion.p>
                 </div>
 
