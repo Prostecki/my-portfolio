@@ -33,7 +33,12 @@ export function Contact() {
                 body: JSON.stringify(data),
             })
 
-            if (!response.ok) throw new Error('Failed to send message')
+            const responseData = await response.json()
+
+            if (!response.ok) {
+                console.error("Server responded with error:", responseData)
+                throw new Error(responseData.error || 'Failed to send message')
+            }
             
             toast.success("Message sent! I'll get back to you soon.")
             ;(e.target as HTMLFormElement).reset()
