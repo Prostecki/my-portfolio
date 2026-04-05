@@ -10,6 +10,14 @@ import { ExternalLink, Github } from "lucide-react"
 
 const projects = [
     {
+        title: "Med Voice",
+        description: "AI-automation platform for clinical workflows using a grounded Gemini Live voice agent (Google ADK). Engineered with GCP Cloud Tasks for autonomous patient rescheduling and a zero-trust serverless architecture on Cloud Run. Features real-time Firestore sync and a hybrid Twilio Voice/WebSocket integration for seamless telephony interactions.",
+        image: "/med_voice.png",
+        tags: ["Gemini Live", "Google ADK", "GCP", "Cloud Run", "Terraform", "Twilio", "Firestore"],
+        link: "https://github.com/Prostecki/med-voice",
+        github: "https://github.com/Prostecki/med-voice",
+    },
+    {
         title: "AI Bookstore Agent",
         description: "Architected a hierarchical multi-agent system (Root + Sub-agents) using Python and Google ADK, automating the end-to-end e-commerce flow from discovery to checkout. Engineered semantic retrieval pipelines via Vertex AI Vector Search and Embeddings across 270,000+ records in BigQuery. Deployed a Next.js/TypeScript conversational UI and provisioned the entire cloud infrastructure via Terraform.",
         image: "/ai_bookstore_agent.png",
