@@ -58,16 +58,33 @@ function StarField(props: any) {
 
 export function BackgroundCanvas() {
     const [mounted, setMounted] = React.useState(false)
+    const [isVisible, setIsVisible] = React.useState(true)
+    const containerRef = React.useRef<HTMLDivElement>(null)
 
     React.useEffect(() => {
         setMounted(true)
+
+        const observer = new IntersectionObserver(
+            ([entry]) => setIsVisible(entry.isIntersecting),
+            { threshold: 0 }
+        )
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current)
+        }
+
+        return () => observer.disconnect()
     }, [])
 
     if (!mounted) return null
 
     return (
-        <div className="absolute inset-0 -z-10 h-full w-full">
-            <Canvas camera={{ position: [0, 0, 1] }}>
+        <div ref={containerRef} className="absolute inset-0 -z-10 h-full w-full">
+            <Canvas 
+                camera={{ position: [0, 0, 1] }}
+                frameloop={isVisible ? "always" : "demand"}
+                dpr={[1, 2]}
+            >
                 <React.Suspense fallback={null}>
                     <StarField />
                 </React.Suspense>

@@ -10,6 +10,14 @@ import { ExternalLink, Github } from "lucide-react"
 
 const projects = [
     {
+        title: "BNB Application",
+        description: "Full-stack property rental platform similar to Airbnb. Users can browse, book, and manage property listings with a Next.js frontend and Hono backend API.",
+        image: "/bnb_app.png",
+        tags: ["Next.js", "Hono", "Supabase", "Docker", "TypeScript"],
+        link: "",
+        github: "https://github.com/Prostecki/bnb-application",
+    },
+    {
         title: "Med Voice",
         description: "AI-automation platform for clinical workflows using a grounded Gemini Live voice agent (Google ADK). Engineered with GCP Cloud Tasks for autonomous patient rescheduling and a zero-trust serverless architecture on Cloud Run. Features real-time Firestore sync and a hybrid Twilio Voice/WebSocket integration for seamless telephony interactions.",
         image: "/med_voice.png",
@@ -74,7 +82,7 @@ export function Projects() {
                                         />
                                     </div>
                                 </div>
-                                
+
                                 {/* Content Section */}
                                 <CardContent className="p-6 md:p-8 flex flex-col flex-1">
                                     <div className="space-y-4">
@@ -88,9 +96,9 @@ export function Projects() {
 
                                     <div className="flex flex-wrap gap-2 mt-6 mb-8 flex-1 content-start">
                                         {project.tags.map((tag) => (
-                                            <Badge 
-                                                key={tag} 
-                                                variant="secondary" 
+                                            <Badge
+                                                key={tag}
+                                                variant="secondary"
                                                 className="text-[10px] uppercase font-bold tracking-widest bg-primary/5 text-primary border border-primary/10 transition-colors group-hover:bg-primary group-hover:text-primary-foreground"
                                             >
                                                 {tag}

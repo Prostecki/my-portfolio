@@ -4,11 +4,11 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { Monitor, Code2, Paintbrush, Zap } from "lucide-react"
+import { Monitor, Code2, Zap, Brain } from "lucide-react"
 
 const skillCategories = [
     {
-        title: "Language",
+        title: "Languages",
         icon: <Code2 className="h-6 w-6" />,
         skills: ["TypeScript", "JavaScript", "Python", "SQL"],
     },
@@ -24,7 +24,7 @@ const skillCategories = [
     },
     {
         title: "AI/LLM",
-        icon: <Monitor className="h-6 w-6" />,
+        icon: <Brain className="h-6 w-6" />,
         skills: ["Google ADK", "Vertex AI", "Agentic Workflows", "Prompt Engineering"],
     },
 ]
@@ -41,7 +41,7 @@ export function Skills() {
                     className="text-center"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">Tech Stack</h2>
-                    <p className="text-muted-foreground text-lg">My Tech Stack</p>
+                    <p className="text-muted-foreground text-lg">Tools and technologies I work with daily</p>
                     <p className="text-muted-foreground text-sm max-w-2xl mx-auto mt-4">
                         Here&apos;s a collection of technologies I&apos;ve been working with across frontend, backend, and development tools.
                         Each of them plays a role in how I build, test, and ship modern web applications.

@@ -1,0 +1,2 @@
+- [Portfolio 2026 Design System](project_design_system.md) — tokens, breakpoints, section patterns, animation conventions, card/button variants
+- [User Profile](user_profile.md) — Mark Taratynov, fullstack cloud engineer, senior-capable React developer building his portfolio
