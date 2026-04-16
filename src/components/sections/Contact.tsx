@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Send, Mail, MapPin, Phone, Loader2 } from "lucide-react"
 import { toast } from "sonner"
+import { contactSchema } from "@/lib/contact-schema"
 
 type ContactInfoItem = {
     icon: React.ReactNode
@@ -18,11 +19,13 @@ type ContactInfoItem = {
 
 export function Contact() {
     const [isSubmitting, setIsSubmitting] = React.useState(false)
+    const [errors, setErrors] = React.useState<Record<string, string>>({})
     const shouldReduceMotion = useReducedMotion()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsSubmitting(true)
+        setErrors({})
 
         try {
             const formData = new FormData(e.currentTarget)
@@ -31,6 +34,22 @@ export function Contact() {
                 email: formData.get('email'),
                 subject: formData.get('subject'),
                 message: formData.get('message'),
+            }
+
+            // Validate on client side first
+            const validationResult = contactSchema.safeParse(data)
+            if (!validationResult.success) {
+                const fieldErrors: Record<string, string> = {}
+                const flattenedErrors = validationResult.error.flatten().fieldErrors
+                Object.entries(flattenedErrors).forEach(([field, messages]) => {
+                    if (Array.isArray(messages) && messages.length > 0) {
+                        fieldErrors[field] = messages[0]
+                    }
+                })
+                setErrors(fieldErrors)
+                toast.error("Please check the form for errors.")
+                setIsSubmitting(false)
+                return
             }
 
             const response = await fetch('/api/contact', {
@@ -44,6 +63,16 @@ export function Contact() {
             const responseData = await response.json()
 
             if (!response.ok) {
+                if (response.status === 422 && responseData.fields) {
+                    // Handle server validation errors
+                    const fieldErrors: Record<string, string> = {}
+                    Object.entries(responseData.fields).forEach(([field, messages]) => {
+                        if (Array.isArray(messages) && messages.length > 0) {
+                            fieldErrors[field] = messages[0]
+                        }
+                    })
+                    setErrors(fieldErrors)
+                }
                 console.error("Server responded with error:", responseData)
                 throw new Error(responseData.error || 'Failed to send message')
             }
@@ -51,7 +80,9 @@ export function Contact() {
             toast.success("Message sent! I'll get back to you soon.")
             ;(e.target as HTMLFormElement).reset()
         } catch (error) {
-            toast.error("Failed to send message. Please try again later.")
+            if (!Object.keys(errors).length) {
+                toast.error("Failed to send message. Please try again later.")
+            }
             console.error("Contact form error:", error)
         } finally {
             setIsSubmitting(false)
@@ -145,6 +176,9 @@ export function Contact() {
                                                 autoComplete="name"
                                                 className="bg-background/50 border-none shadow-inner"
                                             />
+                                            {errors.name && (
+                                                <p className="text-sm text-red-500 font-medium">{errors.name}</p>
+                                            )}
                                         </div>
                                         <div className="space-y-2">
                                             <label htmlFor="email" className="sr-only">Email</label>
@@ -158,6 +192,9 @@ export function Contact() {
                                                 autoComplete="email"
                                                 className="bg-background/50 border-none shadow-inner"
                                             />
+                                            {errors.email && (
+                                                <p className="text-sm text-red-500 font-medium">{errors.email}</p>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="space-y-2">
@@ -166,11 +203,13 @@ export function Contact() {
                                             id="subject"
                                             name="subject"
                                             placeholder="Subject"
-                                            required
                                             disabled={isSubmitting}
                                             autoComplete="off"
                                             className="bg-background/50 border-none shadow-inner"
                                         />
+                                        {errors.subject && (
+                                            <p className="text-sm text-red-500 font-medium">{errors.subject}</p>
+                                        )}
                                     </div>
                                     <div className="space-y-2">
                                         <label htmlFor="message" className="sr-only">Message</label>
@@ -183,6 +222,9 @@ export function Contact() {
                                             autoComplete="off"
                                             className="min-h-[150px] bg-background/50 border-none shadow-inner resize-none"
                                         />
+                                        {errors.message && (
+                                            <p className="text-sm text-red-500 font-medium">{errors.message}</p>
+                                        )}
                                     </div>
                                     <Button
                                         type="submit"

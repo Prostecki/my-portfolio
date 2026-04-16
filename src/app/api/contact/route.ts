@@ -1,33 +1,31 @@
 import { NextResponse } from 'next/server';
+import { contactSchema } from '@/lib/contact-schema';
 
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const { name, email, subject, message } = data;
 
-    if (!name || !email || !message) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    const validationResult = contactSchema.safeParse(data);
+    if (!validationResult.success) {
+      return NextResponse.json(
+        {
+          error: 'Validation failed',
+          fields: validationResult.error.flatten().fieldErrors,
+        },
+        { status: 422 }
+      );
     }
 
+    const { name, email, subject, message } = validationResult.data;
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
-    // Debug response to check what's configured
-    console.log('=== CONTACT API DEBUG ===');
-    console.log('Bot Token exists:', !!botToken);
-    console.log('Chat ID exists:', !!chatId);
-    console.log('Bot Token length:', botToken?.length || 0);
-    console.log('Chat ID value:', chatId);
-    console.log('=======================');
-
     if (!botToken || !chatId) {
-      return NextResponse.json({
-        error: 'Server configuration error',
-        debug: {
-          hasBotToken: !!botToken,
-          hasChatId: !!chatId,
-        }
-      }, { status: 500 });
+      console.error('Telegram bot token or chat ID is not configured');
+      return NextResponse.json(
+        { error: 'Server configuration error' },
+        { status: 500 }
+      );
     }
 
     const text = `
