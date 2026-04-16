@@ -12,16 +12,21 @@ export async function POST(req: Request) {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
+    // Debug response to check what's configured
+    console.log('=== CONTACT API DEBUG ===');
+    console.log('Bot Token exists:', !!botToken);
+    console.log('Chat ID exists:', !!chatId);
+    console.log('Bot Token length:', botToken?.length || 0);
+    console.log('Chat ID value:', chatId);
+    console.log('=======================');
+
     if (!botToken || !chatId) {
-      console.error('Telegram configuration missing:', {
-        hasBotToken: !!botToken,
-        hasChatId: !!chatId,
-        botTokenLength: botToken?.length || 0,
-        chatIdLength: chatId?.length || 0,
-      });
       return NextResponse.json({
         error: 'Server configuration error',
-        details: 'Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID'
+        debug: {
+          hasBotToken: !!botToken,
+          hasChatId: !!chatId,
+        }
       }, { status: 500 });
     }
 
