@@ -13,8 +13,16 @@ export async function POST(req: Request) {
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     if (!botToken || !chatId) {
-      console.error('Telegram bot token or chat ID is not configured');
-      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+      console.error('Telegram configuration missing:', {
+        hasBotToken: !!botToken,
+        hasChatId: !!chatId,
+        botTokenLength: botToken?.length || 0,
+        chatIdLength: chatId?.length || 0,
+      });
+      return NextResponse.json({
+        error: 'Server configuration error',
+        details: 'Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID'
+      }, { status: 500 });
     }
 
     const text = `
@@ -41,12 +49,22 @@ ${message}
     });
 
     if (!response.ok) {
-      throw new Error(`Telegram API responded with status ${response.status}`);
+      const errorText = await response.text();
+      console.error('Telegram API error:', {
+        status: response.status,
+        statusText: response.statusText,
+        body: errorText,
+      });
+      throw new Error(`Telegram API responded with status ${response.status}: ${errorText}`);
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error sending message to Telegram:', error);
-    return NextResponse.json({ error: 'Failed to send message' }, { status: 500 });
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error('Error sending message to Telegram:', errorMessage);
+    return NextResponse.json({
+      error: 'Failed to send message',
+      details: errorMessage
+    }, { status: 500 });
   }
 }
