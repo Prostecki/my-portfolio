@@ -162,7 +162,7 @@ export function Experience() {
                                                     <div className="absolute left-[11px] md:left-[15px] top-2 bottom-2 w-0.5 bg-muted-foreground/20" aria-hidden="true" />
                                                 )}
 
-                                                {exp.roles.map((role, rIndex) => (
+                                                {exp.roles.map((role) => (
                                                     <div key={role.title} className="relative">
                                                         {/* Dot */}
                                                         {exp.roles.length > 1 && (

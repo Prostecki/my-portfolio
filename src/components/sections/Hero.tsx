@@ -23,12 +23,7 @@ const scaleIn = (delay: number, initialScale = 0.9) => ({
 })
 
 export function Hero() {
-    const [mounted, setMounted] = React.useState(false)
     const shouldReduceMotion = useReducedMotion()
-
-    React.useEffect(() => {
-        setMounted(true)
-    }, [])
 
     return (
         <section id="hero" aria-label="Hero" className="relative min-h-screen flex flex-col items-center justify-center pt-20 px-4 overflow-hidden">

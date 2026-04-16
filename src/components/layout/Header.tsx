@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { motion, useScroll, useTransform } from "framer-motion"
 import { ModeToggle } from "@/components/mode-toggle"
 import { Button } from "@/components/ui/button"
 
