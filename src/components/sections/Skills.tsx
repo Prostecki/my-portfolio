@@ -15,7 +15,7 @@ const skillCategories = [
     {
         title: "Frameworks",
         icon: <Monitor className="h-6 w-6" />,
-        skills: ["React/Next.js", "Node.js", "Hono", "Express.js"],
+        skills: ["React/Next.js", "Node.js", "Hono", "Express.js", "FastAPI"],
     },
     {
         title: "Cloud/DevOps",
@@ -25,7 +25,7 @@ const skillCategories = [
     {
         title: "AI/LLM",
         icon: <Brain className="h-6 w-6" />,
-        skills: ["Google ADK", "Vertex AI", "Agentic Workflows", "Prompt Engineering"],
+        skills: ["Vertex AI", "Google ADK", "Genkit", "Gemini", "RAG", "Agentic Workflows"],
     },
 ]
 

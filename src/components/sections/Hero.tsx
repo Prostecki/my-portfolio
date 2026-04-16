@@ -96,8 +96,8 @@ export function Hero() {
                         {...fadeUp(0.4)}
                         className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto"
                     >
-                        Specializing in Cloud Infrastructure (GCP) and Agentic AI.
-                        Bridging application logic and scalable cloud reliability using TypeScript and Terraform.
+                        I build AI agents and cloud infrastructure on Google Cloud Platform.
+                        Specializing in LLM-powered workflows, multi-agent systems, and infrastructure automation.
                     </motion.p>
                 </div>
 

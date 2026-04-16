@@ -64,10 +64,10 @@ const experiences: Experience[] = [
                 duration: calculateDuration("2025-11-01T00:00:00"),
                 location: "Stockholm · On-site",
                 bullets: [
-                    "Infrastructure: Architected 100% Infrastructure-as-Code (IaC) environments using Terraform, reducing environment setup time by 70% and ensuring zero-drift deployments.",
-                    "Backend: Engineered Python APIs to interface with BigQuery, enabling efficient real-time retrieval and processing across a dataset of 270,000+ records.",
-                    "AI: Architected and orchestrated a Multi-agent AI System leveraging Vertex AI and BigQuery, enabling autonomous e-commerce workflows from product discovery to checkout.",
-                    "Frontend: Built responsive and interactive UIs with React/Next.js, ensuring seamless integration with cloud-based backend services"
+                    "Built Infrastructure-as-Code environments using Terraform with zero-drift deployments, reducing environment setup time by 70%.",
+                    "Developed Python FastAPI and Hono backends to process 270,000+ records from BigQuery, enabling real-time data retrieval and LLM integration.",
+                    "Architected multi-agent AI system using Vertex AI, Genkit, and Gemini API to orchestrate autonomous e-commerce workflows from product discovery to checkout.",
+                    "Built responsive React/Next.js frontends with seamless integration to cloud-based services and LLM-powered features."
                 ],
                 link: { href: "https://www.aclarity.se/", label: "aclarity.se" },
                 skills: ["Terraform", "Python", "BigQuery", "Vertex AI", "React/Next.js"],

@@ -26,9 +26,9 @@ export default function Home() {
             © 2026 Mark Taratynov. Created based on modern web standards.
           </p>
           <div className="flex gap-8 text-sm font-medium">
-            <a href="#" className="hover:text-primary transition-colors">GitHub</a>
-            <a href="#" className="hover:text-primary transition-colors">LinkedIn</a>
-            <a href="#" className="hover:text-primary transition-colors">Telegram</a>
+            <a href="https://github.com/Prostecki" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">GitHub</a>
+            <a href="https://www.linkedin.com/in/marktaratynov/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">LinkedIn</a>
+            <a href="https://t.me/marktaratynov" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Telegram</a>
           </div>
         </div>
       </footer>
