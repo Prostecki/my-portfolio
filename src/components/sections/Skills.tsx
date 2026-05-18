@@ -8,24 +8,32 @@ import { Monitor, Code2, Zap, Brain } from "lucide-react"
 
 const skillCategories = [
     {
-        title: "Languages",
+        title: "Backend",
         icon: <Code2 className="h-6 w-6" />,
-        skills: ["TypeScript", "JavaScript", "Python", "SQL"],
+        skills: ["Python", "FastAPI", "TypeScript", "Node.js", "Express.js", "SQL"],
     },
     {
-        title: "Frameworks",
+        title: "Frontend",
         icon: <Monitor className="h-6 w-6" />,
-        skills: ["React/Next.js", "Node.js", "Hono", "Express.js", "FastAPI"],
+        skills: ["React", "Next.js", "React Native", "JavaScript", "Tailwind CSS", "Framer Motion"],
     },
     {
-        title: "Cloud/DevOps",
+        title: "Cloud / DevOps",
         icon: <Zap className="h-6 w-6" />,
-        skills: ["GCP", "Terraform", "Docker", "CI/CD", "Firebase"],
+        skills: ["GCP", "Terraform", "Docker", "CI/CD", "Cloud Run", "Firebase", "REST APIs"],
     },
     {
-        title: "AI/LLM",
+        title: "AI / LLM",
         icon: <Brain className="h-6 w-6" />,
-        skills: ["Vertex AI", "Google ADK", "Genkit", "Gemini", "RAG", "Agentic Workflows"],
+        skills: [
+            "Vertex AI",
+            "Google ADK",
+            "Gemini",
+            "RAG",
+            "MCP (FastMCP)",
+            "Anthropic API",
+            "Agentic Workflows",
+        ],
     },
 ]
 
@@ -57,7 +65,7 @@ export function Skills() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
-                            <Card className="h-full border border-muted-foreground/10 bg-card/50 backdrop-blur-md overflow-hidden hover:border-primary/50 transition-colors group">
+                            <Card className="h-full border border-muted-foreground/10 bg-card/50 overflow-hidden hover:border-primary/50 transition-colors group">
                                 <CardContent className="p-8 space-y-6">
                                     <div className="flex items-center gap-4">
                                         <div className="p-3 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
@@ -71,7 +79,7 @@ export function Skills() {
                                             <Badge
                                                 key={skill}
                                                 variant="secondary"
-                                                className="bg-muted-foreground/5 text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all cursor-default"
+                                                className="bg-muted-foreground/5 text-foreground/70 hover:bg-primary hover:text-primary-foreground transition-all cursor-default"
                                             >
                                                 {skill}
                                             </Badge>

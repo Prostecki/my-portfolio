@@ -5,8 +5,8 @@ import { Card, CardContent } from "@/components/ui/card"
 
 const ABOUT_FACTS = [
     { label: "Location", value: "Stockholm, Sweden" },
-    { label: "Current Role", value: "Fullstack Engineer (GCP & Agentic AI)" },
-    { label: "Employer", value: "Aclarity AB" },
+    { label: "Current Role", value: "Fullstack Software Engineer" },
+    { label: "Employer", value: "Aclarity AB · Jeskin" },
     { label: "Interests", value: "Problem Solving, AI, Web Dev" },
 ] as const
 
@@ -52,7 +52,7 @@ export function About() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                     >
-                        <Card className="border-none shadow-2xl bg-background/50 backdrop-blur-sm">
+                        <Card className="border-none shadow-2xl bg-background/80">
                             <CardContent className="p-8 space-y-4">
                                 <div className="space-y-2">
                                     <h3 className="font-bold text-xl">My Story</h3>

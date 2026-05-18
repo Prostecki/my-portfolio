@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 520" fill="none" role="img" aria-label="Kyra MCP">
+  <defs>
+    <linearGradient id="kyra-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+  </defs>
+
+  <rect width="390" height="520" fill="#000000" />
+
+  <g transform="translate(52 196) scale(1.65)">
+    <g fill="#F2EEE4">
+      <rect width="12" height="56" />
+      <rect x="19" y="7" width="15" height="15" transform="rotate(38 26.5 14.5)" />
+      <rect x="18" y="33" width="24" height="13" transform="rotate(-32 30 39.5)" />
+    </g>
+    <text
+      x="58"
+      y="38"
+      fill="#F2EEE4"
+      font-family="ui-sans-serif, system-ui, sans-serif"
+      font-size="30"
+      font-weight="400"
+      letter-spacing="-0.02em"
+    >kyra</text>
+  </g>
+
+  <text
+    x="195"
+    y="400"
+    text-anchor="middle"
+    fill="url(#kyra-accent)"
+    font-family="ui-monospace, ui-sans-serif, monospace"
+    font-size="14"
+    font-weight="600"
+    letter-spacing="0.28em"
+  >MCP SERVER</text>
+</svg>

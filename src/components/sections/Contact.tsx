@@ -138,7 +138,7 @@ export function Contact() {
                                     {item.icon}
                                 </div>
                                 <div>
-                                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest">{item.label}</p>
+                                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest">{item.label}</p>
                                     {item.href ? (
                                         <a
                                             href={item.href}
@@ -161,7 +161,7 @@ export function Contact() {
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="md:col-span-2"
                     >
-                        <Card className="border-none shadow-2xl bg-muted/20 backdrop-blur-sm">
+                        <Card className="border-none shadow-2xl bg-muted/20">
                             <CardContent className="p-8">
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -174,7 +174,7 @@ export function Contact() {
                                                 required
                                                 disabled={isSubmitting}
                                                 autoComplete="name"
-                                                className="bg-background/50 border-none shadow-inner"
+                                                className="bg-background border border-border shadow-inner"
                                             />
                                             {errors.name && (
                                                 <p className="text-sm text-red-500 font-medium">{errors.name}</p>
@@ -190,7 +190,7 @@ export function Contact() {
                                                 required
                                                 disabled={isSubmitting}
                                                 autoComplete="email"
-                                                className="bg-background/50 border-none shadow-inner"
+                                                className="bg-background border border-border shadow-inner"
                                             />
                                             {errors.email && (
                                                 <p className="text-sm text-red-500 font-medium">{errors.email}</p>
@@ -205,7 +205,7 @@ export function Contact() {
                                             placeholder="Subject"
                                             disabled={isSubmitting}
                                             autoComplete="off"
-                                            className="bg-background/50 border-none shadow-inner"
+                                            className="bg-background border border-border shadow-inner"
                                         />
                                         {errors.subject && (
                                             <p className="text-sm text-red-500 font-medium">{errors.subject}</p>
@@ -220,7 +220,7 @@ export function Contact() {
                                             required
                                             disabled={isSubmitting}
                                             autoComplete="off"
-                                            className="min-h-[150px] bg-background/50 border-none shadow-inner resize-none"
+                                            className="min-h-[150px] bg-background border border-border shadow-inner resize-none"
                                         />
                                         {errors.message && (
                                             <p className="text-sm text-red-500 font-medium">{errors.message}</p>
