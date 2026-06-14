@@ -4,36 +4,28 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { Monitor, Code2, Zap, Brain } from "lucide-react"
+import { Monitor, Code2, Zap, Award } from "lucide-react"
 
 const skillCategories = [
+    {
+        title: "Frontend",
+        icon: <Monitor className="h-6 w-6" />,
+        skills: ["React", "Next.js", "JavaScript (ES6+)", "CSS", "Tailwind CSS", "Framer Motion"],
+    },
     {
         title: "Backend",
         icon: <Code2 className="h-6 w-6" />,
         skills: ["Python", "FastAPI", "TypeScript", "Node.js", "Express.js", "SQL"],
     },
     {
-        title: "Frontend",
-        icon: <Monitor className="h-6 w-6" />,
-        skills: ["React", "Next.js", "React Native", "JavaScript", "Tailwind CSS", "Framer Motion"],
-    },
-    {
         title: "Cloud / DevOps",
         icon: <Zap className="h-6 w-6" />,
-        skills: ["GCP", "Terraform", "Docker", "CI/CD", "Cloud Run", "Firebase", "REST APIs"],
+        skills: ["GCP", "Terraform", "Docker", "CI/CD", "Cloud Run", "Firebase", "REST APIs", "WebSocket"],
     },
     {
-        title: "AI / LLM",
-        icon: <Brain className="h-6 w-6" />,
-        skills: [
-            "Vertex AI",
-            "Google ADK",
-            "Gemini",
-            "RAG",
-            "MCP (FastMCP)",
-            "Anthropic API",
-            "Agentic Workflows",
-        ],
+        title: "Certifications",
+        icon: <Award className="h-6 w-6" />,
+        skills: ["Google Cloud Certified — Associate Cloud Engineer (ACE)"],
     },
 ]
 
@@ -50,10 +42,6 @@ export function Skills() {
                 >
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">Tech Stack</h2>
                     <p className="text-muted-foreground text-lg">Tools and technologies I work with daily</p>
-                    <p className="text-muted-foreground text-sm max-w-2xl mx-auto mt-4">
-                        Here&apos;s a collection of technologies I&apos;ve been working with across frontend, backend, and development tools.
-                        Each of them plays a role in how I build, test, and ship modern web applications.
-                    </p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

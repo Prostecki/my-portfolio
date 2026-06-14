@@ -16,35 +16,26 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://marktaratynov.dev"),
-  title: "Mark Taratynov | Fullstack Cloud Engineer",
+  title: "Mark Taratynov | Fullstack Software Engineer",
   description:
-    "Fullstack Cloud Engineer based in Stockholm, Sweden. Specializing in GCP, Agentic AI, TypeScript, and Terraform. Open to new opportunities — view my projects and get in touch.",
+    "Fullstack Software Engineer in Stockholm. React, TypeScript, Python, and GCP. GCP ACE certified — view projects and get in touch.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Mark Taratynov | Fullstack Cloud Engineer",
+    title: "Mark Taratynov | Fullstack Software Engineer",
     description:
-      "Fullstack Cloud Engineer based in Stockholm, Sweden. Specializing in GCP, Agentic AI, TypeScript, and Terraform. Open to new opportunities.",
+      "Fullstack Software Engineer in Stockholm. React, TypeScript, Python, and GCP. GCP ACE certified.",
     url: "/",
     siteName: "Mark Taratynov",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Mark Taratynov — Fullstack Cloud Engineer",
-      },
-    ],
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mark Taratynov | Fullstack Cloud Engineer",
+    title: "Mark Taratynov | Fullstack Software Engineer",
     description:
-      "Fullstack Cloud Engineer based in Stockholm, Sweden. Specializing in GCP, Agentic AI, TypeScript, and Terraform.",
-    images: ["/og-image.png"],
+      "Fullstack Software Engineer in Stockholm. React, TypeScript, Python, and GCP. GCP ACE certified.",
   },
   robots: {
     index: true,

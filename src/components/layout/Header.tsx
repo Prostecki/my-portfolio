@@ -68,8 +68,8 @@ export function Header() {
 
                     <div className="flex items-center gap-2">
                         <ModeToggle />
-                        <Button variant="default" size="sm" className="hidden sm:inline-flex rounded-full px-6">
-                            Hire Me
+                        <Button variant="default" size="sm" className="hidden sm:inline-flex rounded-full px-6" asChild>
+                            <a href="#contact">Hire Me</a>
                         </Button>
                         <Button
                             variant="ghost"
@@ -107,8 +107,8 @@ export function Header() {
                             {item.name}
                         </Link>
                     ))}
-                    <Button variant="default" size="lg" className="mt-8 rounded-full px-12 w-full sm:hidden">
-                        Hire Me
+                    <Button variant="default" size="lg" className="mt-8 rounded-full px-12 w-full sm:hidden" asChild>
+                        <a href="#contact" onClick={() => setMenuOpen(false)}>Hire Me</a>
                     </Button>
                 </nav>
             </div>

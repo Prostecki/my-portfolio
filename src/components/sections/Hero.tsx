@@ -42,7 +42,7 @@ export function Hero() {
                     <div className="relative">
                         <Avatar className="h-32 w-32 md:h-48 md:w-48 border-4 border-background shadow-2xl overflow-hidden">
                             <Image
-                                src="/avatar.png"
+                                src="/avatar.webp"
                                 alt="Mark Taratynov"
                                 width={192}
                                 height={192}
@@ -84,15 +84,21 @@ export function Hero() {
                         className="text-4xl md:text-7xl font-bold tracking-tighter"
                     >
                         I&apos;m <span className="text-primary italic">Mark Taratynov</span>, <br className="hidden md:block" />
-                        Fullstack Cloud Engineer
+                        Fullstack Software Engineer
                     </motion.h1>
 
                     <motion.p
                         {...fadeUp(0.4)}
                         className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto"
                     >
-                        I build AI agents and cloud infrastructure on Google Cloud Platform.
-                        Specializing in LLM-powered workflows, multi-agent systems, and infrastructure automation.
+                        Building engaging web experiences — React/TypeScript frontends, Python/FastAPI backends,
+                        and scalable applications on GCP. AI tools are a natural part of my daily workflow.
+                    </motion.p>
+                    <motion.p
+                        {...fadeUp(0.45)}
+                        className="text-sm md:text-base text-muted-foreground/80 max-w-xl mx-auto"
+                    >
+                        GCP Associate Cloud Engineer certified
                     </motion.p>
                 </div>
 

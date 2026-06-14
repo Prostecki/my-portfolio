@@ -30,7 +30,7 @@ export function ProjectCardImage({
       // eslint-disable-next-line @next/next/no-img-element -- Next/Image does not render public SVGs reliably
       <img
         src={project.image}
-        alt=""
+        alt={project.title}
         decoding="async"
         fetchPriority={priority ? "high" : "auto"}
         loading={priority ? "eager" : "lazy"}
@@ -43,7 +43,7 @@ export function ProjectCardImage({
   return (
     <Image
       src={project.image}
-      alt=""
+      alt={project.title}
       fill
       priority={priority}
       sizes="(max-width: 640px) 78vw, 328px"

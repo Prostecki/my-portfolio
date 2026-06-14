@@ -7,6 +7,7 @@ import * as THREE from "three"
 // @ts-expect-error maath types are not available
 import * as random from "maath/random/dist/maath-random.esm"
 import { useTheme } from "next-themes"
+import { useReducedMotion } from "framer-motion"
 
 interface StarFieldProps {
     [key: string]: unknown
@@ -63,12 +64,13 @@ function StarField(props: StarFieldProps) {
 
 export function BackgroundCanvas() {
     const [mounted, setMounted] = React.useState(false)
+    const shouldReduceMotion = useReducedMotion()
 
     React.useEffect(() => {
         setMounted(true)
     }, [])
 
-    if (!mounted) return null
+    if (!mounted || shouldReduceMotion) return null
 
     return (
         <div className="absolute inset-0 -z-10 h-full w-full">

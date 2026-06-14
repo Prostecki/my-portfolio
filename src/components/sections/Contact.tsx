@@ -34,6 +34,7 @@ export function Contact() {
                 email: formData.get('email'),
                 subject: formData.get('subject'),
                 message: formData.get('message'),
+                website: formData.get('website') ?? '',
             }
 
             // Validate on client side first
@@ -42,6 +43,7 @@ export function Contact() {
                 const fieldErrors: Record<string, string> = {}
                 const flattenedErrors = validationResult.error.flatten().fieldErrors
                 Object.entries(flattenedErrors).forEach(([field, messages]) => {
+                    if (field === 'website') return
                     if (Array.isArray(messages) && messages.length > 0) {
                         fieldErrors[field] = messages[0]
                     }
@@ -62,27 +64,29 @@ export function Contact() {
 
             const responseData = await response.json()
 
+            if (response.status === 422 && responseData.fields) {
+                const fieldErrors: Record<string, string> = {}
+                Object.entries(responseData.fields).forEach(([field, messages]) => {
+                    if (field === 'website') return
+                    if (Array.isArray(messages) && messages.length > 0) {
+                        fieldErrors[field] = messages[0]
+                    }
+                })
+                setErrors(fieldErrors)
+                toast.error("Please check the form for errors.")
+                return
+            }
+
             if (!response.ok) {
-                if (response.status === 422 && responseData.fields) {
-                    // Handle server validation errors
-                    const fieldErrors: Record<string, string> = {}
-                    Object.entries(responseData.fields).forEach(([field, messages]) => {
-                        if (Array.isArray(messages) && messages.length > 0) {
-                            fieldErrors[field] = messages[0]
-                        }
-                    })
-                    setErrors(fieldErrors)
-                }
                 console.error("Server responded with error:", responseData)
-                throw new Error(responseData.error || 'Failed to send message')
+                toast.error(responseData.error || "Failed to send message. Please try again later.")
+                return
             }
 
             toast.success("Message sent! I'll get back to you soon.")
             ;(e.target as HTMLFormElement).reset()
         } catch (error) {
-            if (!Object.keys(errors).length) {
-                toast.error("Failed to send message. Please try again later.")
-            }
+            toast.error("Failed to send message. Please try again later.")
             console.error("Contact form error:", error)
         } finally {
             setIsSubmitting(false)
@@ -163,7 +167,18 @@ export function Contact() {
                     >
                         <Card className="border-none shadow-2xl bg-muted/20">
                             <CardContent className="p-8">
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                                    {/* Honeypot — hidden from real users, bots fill this */}
+                                    <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+                                        <label htmlFor="website">Website</label>
+                                        <input
+                                            type="text"
+                                            id="website"
+                                            name="website"
+                                            tabIndex={-1}
+                                            autoComplete="off"
+                                        />
+                                    </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="space-y-2">
                                             <label htmlFor="name" className="sr-only">Name</label>
@@ -174,10 +189,12 @@ export function Contact() {
                                                 required
                                                 disabled={isSubmitting}
                                                 autoComplete="name"
+                                                aria-invalid={!!errors.name}
+                                                aria-describedby={errors.name ? "name-error" : undefined}
                                                 className="bg-background border border-border shadow-inner"
                                             />
                                             {errors.name && (
-                                                <p className="text-sm text-red-500 font-medium">{errors.name}</p>
+                                                <p id="name-error" className="text-sm text-red-500 font-medium">{errors.name}</p>
                                             )}
                                         </div>
                                         <div className="space-y-2">
@@ -190,10 +207,12 @@ export function Contact() {
                                                 required
                                                 disabled={isSubmitting}
                                                 autoComplete="email"
+                                                aria-invalid={!!errors.email}
+                                                aria-describedby={errors.email ? "email-error" : undefined}
                                                 className="bg-background border border-border shadow-inner"
                                             />
                                             {errors.email && (
-                                                <p className="text-sm text-red-500 font-medium">{errors.email}</p>
+                                                <p id="email-error" className="text-sm text-red-500 font-medium">{errors.email}</p>
                                             )}
                                         </div>
                                     </div>
@@ -205,10 +224,12 @@ export function Contact() {
                                             placeholder="Subject"
                                             disabled={isSubmitting}
                                             autoComplete="off"
+                                            aria-invalid={!!errors.subject}
+                                            aria-describedby={errors.subject ? "subject-error" : undefined}
                                             className="bg-background border border-border shadow-inner"
                                         />
                                         {errors.subject && (
-                                            <p className="text-sm text-red-500 font-medium">{errors.subject}</p>
+                                            <p id="subject-error" className="text-sm text-red-500 font-medium">{errors.subject}</p>
                                         )}
                                     </div>
                                     <div className="space-y-2">
@@ -220,10 +241,12 @@ export function Contact() {
                                             required
                                             disabled={isSubmitting}
                                             autoComplete="off"
+                                            aria-invalid={!!errors.message}
+                                            aria-describedby={errors.message ? "message-error" : undefined}
                                             className="min-h-[150px] bg-background border border-border shadow-inner resize-none"
                                         />
                                         {errors.message && (
-                                            <p className="text-sm text-red-500 font-medium">{errors.message}</p>
+                                            <p id="message-error" className="text-sm text-red-500 font-medium">{errors.message}</p>
                                         )}
                                     </div>
                                     <Button
